@@ -50,6 +50,8 @@
 \usepackage{sectsty}
 \usepackage{glossaries}
 
+
+
 %Estilo de la página
 %\def\arraystretch{1.5}
 \renewcommand{\baselinestretch}{1.15}
@@ -67,13 +69,22 @@ Escuela de Ingeniería Industrial\vspace{3em}\\
 \textbf{\LARGE{Matías Negrete Oliva}}\vspace{1.5mm}\\
 \textbf{\LARGE{Matías Rodríguez Urtubia}}\vspace{3em}\\
 \LARGE{Informe final técnico}\vspace{2em}\\
-\LARGE{Prof. Guía: Sebastián Cea Echenique}\vspace{1em}\\
+\LARGE{Prof. Guía: PhD. Sebastián Cea Echenique}\vspace{1em}\\
 \LARGE{Prof. Co-Guía: Carlos Erazo Jojot}\vspace{3em}}
 \date{\LARGE{8 de julio, 2020}}
+
+
+\makeglossaries
+\input{glosario}
 \begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%% para numerar paragraph e indexarlos
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewcommand{\listtablename}{Lista de Tablas}%%%%%%%%%%% cambio de nombre
 \renewcommand{\listfigurename}{Lista de Figuras} %%%%%%% cambio de nombre
-
 
 \maketitle
 \thispagestyle{empty}
@@ -88,6 +99,11 @@ Escuela de Ingeniería Industrial\vspace{3em}\\
 \clearpage
 \listoffigures
 \clearpage
+%%%%%%%%%%%%%%%%%%%%%% inicio glosario
+\glsaddall
+\glsaddallunused
+\printglossary[type=main]
+%%%%%%%%%%%%%%%%%%%% fin glosario
 %\listoftables
 \clearpage
 \end{center}%%%%%%% fin centrado índice, figuras, tablas
@@ -459,7 +475,7 @@ Este modelo supone la construcción de una red no dirigida, para la cual el conj
     \label{modelo_red_carencias}
 \end{figure}
 
-Este procedimiento se realiza nuevamente, esta vez representando en los nodos al conjunto \textit{Dimensiones}, en los arcos a las variables agregadas dimensionales, y el pesos de los arcos los valores positivos obtenidos para el cálculo del coeficiente de Pearson entre las variables agregadas dimensionales (fig. \ref{modelo_red_dimensiones}).
+Este procedimiento se realiza nuevamente, esta vez representando en los nodos al conjunto \textit{Dimensiones}, en los arcos a las variables agregadas dimensionales, y en el pesos de los arcos los valores positivos obtenidos para el cálculo del coeficiente de Pearson entre las variables agregadas dimensionales (fig. \ref{modelo_red_dimensiones}).
 
 
 \begin{figure}[H]
@@ -474,7 +490,7 @@ Posteriormente, y mediante el empleo de la herramienta de análisis de redes \te
 \end{enumerate}
 
 
-\subsection{Metodología análisis relacional de la pobreza multidimensional por tipo de hogar y tipologías}
+\subsection{Metodología análisis relacional de la pobreza multidimensional por tipo de hogar y tipologías de la pobreza multidimensional}
 
 La metodología descrita en esta etapa constituye, en primera instancia, una continuación de la ya descrita, esta vez ajustando el enfoque del análisis relacional mediante la división de la muestra de hogares pobres multidimensionales según su clasificación. Posteriormente, la metodología se centra en el análisis de las distintas conformaciones de carencias que caracterizan a los hogares pobres multidimensionales, así como de 2 factores externos al \textit{IPM} que pueden afectar su prevalencia (zona de residencia y número de personas que componen el hogar). Finalmente, se describirá la metodología del análisis comparativo entre el nivel de ingreso de los hogares pobres multidimensionales  y el nivel de pobreza multidimensional, expresada en el \textit{IPM}. 
 
@@ -572,7 +588,7 @@ Para cada hogar clasificado como pobre multidimensionalmente se calculará el \t
 
 \item \textbf{Determinación tipologías por factores externos}
 
-El procedimiento de determinación de tipologías y análisis de frecuencia se realizará nuevamente, esta vez  aplicando el principio de descomponibilidad a través de una partición los datos según los siguientes factores externos:
+El procedimiento de determinación de tipologías y análisis de frecuencia se realizará nuevamente, esta vez  aplicando el principio de descomponibilidad a través de una partición de los datos según los siguientes factores externos:
 
     \begin{itemize}
         \item  \textbf{Zona} (de residencia), pudiendo los hogares pertenecer a las categorías \textit{rural} y \textit{urbano}. 
@@ -635,6 +651,7 @@ Los hogares pobres multidimensionales se clasificarán en distintos intervalos s
 
 
 \item \textbf{Comparación indicador ingreso relativo e \textit{IPM}}
+
 Los valores obtenidos para el indicador relativo de ingreso de cada hogar pobre dimensional se grafican en función del índice de pobreza multidimensional, a través de un diagrama de dispersión. El grado de relación entre ambas variables se medirá empleando para ello el coeficiente de correlación lineal de Pearson. 
 
 \vspace{2em}
@@ -794,7 +811,7 @@ Los pasos 3 y 4 se iterarán, almacenando en cada ciclo los valores obtenidos en
 
 
 
-\subsection{Resultados PARTE I}
+\subsection{Resultados análisis relacional de la pobreza multidimensional}
 \begin{enumerate}
 \item \textbf{Obtención de variables} \\
  La encuesta CASEN 2017 recoge una muestra de 216.439 personas, agrupadas en un total de 70.948 hogares. De ellas, 206.572 personas (95\% del total), pertenecientes a su vez a 67.820 hogares, cuentan con todos los indicadores de carencias requeridos. De este universo, un total de 44.972 personas (21\% ), pertenecientes a su vez a 12.392 hogares, son catalogadas como pobres según el criterio multidimensional de 5 dimensiones. Las variables de entrada del modelo corresponden a los indicadores de carencias para cada hogar (12.392 indicadores de carencia por cada una de las 15 carencias), y los indicadores agregados dimensionales (12.392 indicadores dimensionales por cada una de las 5 dimensiones).
@@ -882,12 +899,12 @@ Ahora bien, las dimensiones con mayor peso estructural corresponden a Redes y co
 \end{enumerate}
 
 
-\subsection{RESULTADOS PARTE II}
+\subsection{Resultados análisis relacional por tipo de hogar y tipologías de la pobreza multidimensional}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Resultados Mati N
 En esta segunda etapa, a la muestra de hogares pobres multidimensionales se le aplicó la propiedad de descomposición tomando en cuenta tres criterios (clasificación por tipo de hogar, por zona de residencia y por número de personas que componen el hogar), y se obtuvieron, de este modo, subgrupos de análisis que permitieron focalizar el estudio. También se realizó un análisis comparativo con el nivel de ingresos de los hogares, empleando como medida de referencia la línea de la pobreza.
 
 
-\subsection{Análisis relacional por tipo de hogar}
+\subsubsection{Análisis relacional por tipo de hogar}
 La descomposición de la muestra por tipo de hogar generó 6 subgrupos de análisis, que corresponden a los 6 tipos de hogares existentes y que consideran las definiciones especificadas en la sección anterior. Cada subgrupo fue sometido a un análisis relacional, es decir, un cálculo de las correlaciones entre carencias, que permitió obtener un mapa de calor, una red de carencias, los grados nodales y los grados de intermediación de las carencias. 
 
 En la Figura \ref{distHogarTotal} se presenta la distribución de los hogares considerando la muestra total de hogares, y en la Figura \ref{distHogarpobres} se presenta la distribución de los hogares considerando la muestra de hogares pobres multidimensionales. 
@@ -909,7 +926,9 @@ Como se puede apreciar, el tipo de hogar biparental nuclear es el más presente 
 
 A continuación, se detallan los resultados para cada tipo de hogar.
 
-\subsubsection{Análisis relacional Hogar Unipersonal}
+
+\paragraph{Análisis relacional Hogar Unipersonal}
+
 El subgrupo de hogares unipersonales tiene un tamaño de muestra de 1.246 hogares, que representan el 10,1\% del total de hogares pobres multidimensionales. En la Figura \ref{freHUni} se presenta un resumen de la distribución de carencias de la muestra.
 \begin{figure}[H]
     \centering
@@ -949,7 +968,7 @@ Los pesos nodales muestran el nivel de conectividad de una carencia con el resto
 
 Si bien Escolaridad es la carencia más presente en los hogares unipersonales, las dinámicas internas de este tipo de hogar sugieren que las carencias Adscripción a sistema de salud, Trato igualitario, Seguridad y Entorno podrían ser predictores simples de que un hogar es pobre multidimensional, debido a los vínculos que generan estas carencias con otras de la red. 
 
-\subsubsection{Análisis relacional Hogar Monoparental Nuclear}
+\paragraph{Análisis relacional Hogar Monoparental Nuclear}
 El subgrupo de hogares monoparentales nucleares tiene un tamaño de muestra de 2.180 hogares, que representan el 17,6\% del total de hogares pobres multidimensionales. En la Figura \ref{freHMononuc} se muestran las distribuciones de las carencias.
 \begin{figure}[H]
   \centering
@@ -990,7 +1009,7 @@ Las carencias con mayor peso nodal son Trato igualitario (0,55) y Seguridad (0,4
 
 Las carencias Apoyo y participación social, Trato igualitario y Seguridad, pertenecientes a la dimensión Redes y cohesión social, son las que están más conectadas con el resto de las carencias de la red, y su manifestación en este tipo de hogar se considera un predictor simple para determinar que un hogar es pobre multidimensional.  
 
-\subsubsection{Análisis relacional Hogar Biparental Nuclear}
+\paragraph{Análisis relacional Hogar Biparental Nuclear}
 El subgrupo de los hogares biparentales nucleares tiene un tamaño de muestra de 5.804 hogares, que representan el 46,8\% del total de hogares pobres multidimensionales. En la Figura \ref{freBinuc} se presentan las distribuciones de las carencias.
 \begin{figure}[H]
   \centering
@@ -1028,7 +1047,7 @@ Las carencias con mayor peso nodal son Seguridad (0,41) y Trato igualitario (0,3
 
 Las carencias Apoyo y participación social, Trato igualitario y Seguridad, pertenecientes a la dimensión Redes y cohesión social, y Atención de salud, son las que están más conectadas con otras carencias, lo que permite que actúen como predictores simples en este tipo de hogar para identificar a un hogar pobre multidimensional.  
 
-\subsubsection{Análisis relacional Hogar Monoparental Extendido}
+\paragraph{Análisis relacional Hogar Monoparental Extendido}
 
 El subgrupo de hogares monoparentales extendidos comprende 1.202 hogares, que representan el 9,7\% del total de hogares pobres multidimensionales. En la Figura \ref{freMonoex} se muestran las distribuciones de las carencias.
 
@@ -1070,7 +1089,7 @@ Las carencias con mayor peso nodal son Trato igualitario (0,46) y Seguridad (0,4
 Las carencias Apoyo y participación social, Trato igualitario y Seguridad, pertenecientes a la dimensión Redes y cohesión social, son las que presentan más conexiones con el resto de las carencias de la red, por lo que su manifestación en este tipo de hogar podría considerarse un predictor simple de que el hogar es pobre multidimensional.
 
 
-\subsubsection{Análisis relacional Hogar Biparental Extendido}
+\paragraph{Análisis relacional Hogar Biparental Extendido}
 
 El subgrupo de hogares biparentales extendidos tiene un tamaño de 1.894 hogares, que representan el 15,3\% de los hogares pobres multidimensionales. En la Figura \ref{freBiex} se muestran las distribuciones de las carencias.
 
@@ -1113,7 +1132,7 @@ Las carencias con mayor peso nodal son Seguridad (0,40), Trato igualitario (0,34
 
 Trato igualitario, Seguridad, Atención de salud y Entorno son las carencias más conectadas con el resto de las carencias de la red, por lo que su manifestación en este tipo de hogar podría considerarse un predictor simple de que dicho hogar es pobre multidimensional. 
 
-\subsubsection{Análisis relacional Hogar Censal}
+\paragraph{Análisis relacional Hogar Censal}
 El subgrupo de hogares censales comprende 66 hogares, que representan el 0,5\% del total de hogares pobres multidimensionales. En la Figura \ref{freCensal} se presenta la distribución de carencias de la muestra.
 \begin{figure}[H]
   \centering
@@ -1157,7 +1176,7 @@ Las carencias Seguridad, Trato igualitario, Apoyo y participación social, y Asi
 
 
 
-\subsection{Análisis tipológico de la pobreza multidimensional}
+\subsubsection{Análisis tipológico de la pobreza multidimensional}
 Las tipologías de las carencias son combinaciones específicas de carencias que se manifiestan en los hogares. Su identificación permite conocer cómo la pobreza afecta a los hogares pobres multidimensionales a través de las privaciones. En la Figura \ref{TipGen} se muestran las tipologías más frecuentes de la muestra original de hogares pobres multidimensionales.
 \begin{figure}[H]
     \centering
@@ -1169,7 +1188,7 @@ Como se puede observar, existen 1.849 tipologías de carencias en los hogares po
 
 Luego de obtener las tipologías de los hogares pobres multidimensionales, se aplicó la propiedad de descomposición tomando en cuenta el número de personas que habitan en un hogar y la zona de residencia, criterios que para efectos de este trabajo son considerados factores externos, ya que no afectan el cálculo del índice de pobreza multidimensional (\textit{IPM}).
 
-\subsubsection{Análisis tipológico por número de personas en el hogar}
+\paragraph{Análisis tipológico por número de personas en el hogar}
 La descomposición de la muestra de hogares pobres multidimensionales por número de personas en el hogar generó 7 subgrupos de análisis, los cuales fueron analizados considerando las tipologías y las frecuencias de las carencias. 
 
 A continuación, se detallan los resultados para cada subgrupo.
@@ -1320,7 +1339,7 @@ A continuación, se detallan los resultados para cada subgrupo.
 
 \end{itemize}
 
-\subsubsection{Análisis tipológico por zona de residencia}
+\paragraph{Análisis tipológico por zona de residencia}
 La descomposición de la muestra por zona de residencia generó 2 subgrupos, que fueron analizados considerando las frecuencias tipologías de las carencias. A continuación, se detallan los resultados para cada subgrupo.
 
 \begin{itemize}
@@ -1513,7 +1532,7 @@ Finalmente, habiéndose realizado un análisis de la distribución del ingreso e
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIN RESULTADOS MAX
 
-\subsection{RESULTADOS PARTE III}
+\subsection{Resultados análisis de sensibilidad del \textit{IPM} y proyecciones de la pobreza multidimensional}
 
 
 \subsubsection{Análisis de sensibilidad}
